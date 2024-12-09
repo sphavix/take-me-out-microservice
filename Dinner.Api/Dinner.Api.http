@@ -1,0 +1,6 @@
+@Dinner.Api_HostAddress = http://localhost:5108
+
+GET {{Dinner.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
