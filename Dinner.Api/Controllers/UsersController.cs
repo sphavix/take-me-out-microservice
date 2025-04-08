@@ -5,11 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dinner.Api.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController(ApplicationDbContext context) : ControllerBase
+    public class UsersController(ApplicationDbContext context) : BaseApiController
     {
-
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ApplicationUser>>> GetUsers()
         {
