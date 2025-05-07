@@ -1,5 +1,6 @@
 ﻿using Dinner.Api.Models;
 using Dinner.Api.Persistence;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,7 @@ namespace Dinner.Api.Controllers
 {
     public class UsersController(ApplicationDbContext context) : BaseApiController
     {
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ApplicationUser>>> GetUsers()
         {
@@ -15,7 +17,7 @@ namespace Dinner.Api.Controllers
             return Ok(users);
         }
 
-
+        [Authorize]
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
